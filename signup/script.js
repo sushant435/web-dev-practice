@@ -6,6 +6,8 @@ submitButton.addEventListener("click",function(e){
     let signupForm=document.forms["signupForm"];
     let firstNameInput= signupForm.firstName;
     let lastNameInput= signupForm.lastName;
+    let EmailInput=signupForm.Email;
+    let PasswordInput=signupForm.Password;
 
 
     if(firstNameInput.value==""){
@@ -17,17 +19,34 @@ submitButton.addEventListener("click",function(e){
         errors.lastName="Last Name should not be empty";
 
     }
-
-    console.log(errors);
-    for(let error in errors){
-
+    if(EmailInput.value=="")
+    {
+        errors.Email="Email should not be empty";
     }
 
+    if(PasswordInput.value=="")
+    {
+        errors.Password="Password should not be empty";
+    }
+    if(PasswordInput.value.length <=5)
+    {
+        errors.Password="Minimun 6 characters are needed.";
+    }
+
+console.log(errors);
+
+    for(let error in errors){
+        let lastNameGroup = document.getElementById(`${error}Group`);
+        let lastNameMessage=document.querySelector(`#${error}Group .message`);
+        lastNameGroup.classList .add("error");
+        lastNameMessage.textContent=errors[error];
+    }
+if(Object.keys(errors).length==0)
+{
+    signupForm.submit();
+}
 //     if(emailInput.value==""){
-//         let emailGroup = document.getElementById("emailGroup");
-//         let emailMessage=document.querySelector("#emailGroup .message");
-//         emailGroup.classList.add("error");
-//         emailMessage.textContent="Email should not be empty";
+//         
 //     }
 
 //     if(passwordInput.value==""){
