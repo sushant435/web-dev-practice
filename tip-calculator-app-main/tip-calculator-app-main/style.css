@@ -43,7 +43,7 @@ body
     padding: 20px;
     display: flex;
     gap: 20px;
-    width: 50 vw;
+    width: 50vw;
 }
 
 .calculator-container .calculator
